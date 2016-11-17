@@ -37,6 +37,17 @@ mpz_class Curve::a6(){
 }
 
 void Curve::setCurve(char* dir, char* name) {
+
+ /*   // open a file in read mode.
+    ifstream infile;
+    infile.open("afile.dat");
+
+    cout << "Reading from the file" << endl;
+    infile >> data;
+
+    // write the data at the screen.
+    cout << data << endl;
+*/
     _p = 0;
     _n = 0;
     _a4 = 0;

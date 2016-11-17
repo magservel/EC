@@ -7,6 +7,8 @@
 
 
 #include <gmpxx.h>
+#include <fstream>
+#include <iostream>
 
 class Curve {
 
