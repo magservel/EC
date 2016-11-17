@@ -3,26 +3,33 @@
 //
 
 #include "Point.h"
-#include "Curve.h"
 
 Point::Point() {
     _x = 0;
     _y = 0;
-    _a4 = 0;
-    _a6 = 0;
+    _c = Curve();
+    _inf = false;
 }
-
 Point::Point (mpz_class x, mpz_class y) {
-_x = x;
-_y = y;
+    _x = x;
+    _y = y;
+    _c = Curve();
+    _inf = false;
 
 }
-
 Point::Point (mpz_class x, mpz_class y, Curve c) {
-_x = x;
-_y = y;
-_c = c;
+    _x = x;
+    _y = y;
+    _c = c;
+    _inf = false;
 }
+Point::Point (mpz_class x, mpz_class y, Curve c, bool inf) {
+    _x = x;
+    _y = y;
+    _c = c;
+    _inf = true;
+}
+
 bool Point::operator==(Point q) {
     return (_x == q.x() && _y == q.y());
 }
@@ -30,11 +37,10 @@ bool Point::operator==(Point q) {
 Point Point::opposite(){
     return Point(_x, -_y);
 }
-
 Point Point::add(Point q) { //, mpz_class a1, mpz_class a2, mpz_class a3, mpz_class a4) {
     mpz_class L;
     if (_x != q.x()) L = (_y-q.y()) / (_x-q.x());
-    else L = (3*sqrt(_x) + _a4) / (2*_y);
+    else L = (3*sqrt(_x) + _c.a4()) / (2*_y);
 
     mpz_class xr = sqrt(L) - _x - q.x();
     mpz_class yr = L*xr + L * _x - q.x();
@@ -43,7 +49,6 @@ Point Point::add(Point q) { //, mpz_class a1, mpz_class a2, mpz_class a3, mpz_cl
     //        mpz_class yr = -(L + a1)*xr + L * _x - q.x();
     return Point(xr, yr);
 }
-
 Point Point::multiply(mpz_class n) {
     if(n == 0) return Point();
     else if (n == 1) return Point(_x, _y);
@@ -56,7 +61,6 @@ Point Point::multiply(mpz_class n) {
 mpz_class Point::x(void) {
     return _x;
 }
-
 mpz_class Point::y(void) {
     return _y;
 }

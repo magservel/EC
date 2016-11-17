@@ -17,8 +17,12 @@ using namespace std;
 class Point {
 
 public:
+    /* Constructor */
     Point();
+    Point (mpz_class x, mpz_class y);
+    Point (mpz_class x, mpz_class y, Curve c);
     Point (mpz_class x, mpz_class y, Curve c, bool inf);
+
     bool operator==(Point q);
     Point opposite();
     Point add(Point q);
@@ -31,8 +35,6 @@ private:
     mpz_class _y;
     Curve _c;
     bool _inf;
-
-
 };
 
 
