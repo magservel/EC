@@ -7,7 +7,7 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall")
 
 
 
-set(SOURCE_FILES main.cpp )
+set(SOURCE_FILES main.cpp Data.cpp Data.h)
         #Point.cpp Point.h Curve.cpp Curve.h)
 add_executable(EC ${SOURCE_FILES})
 target_link_libraries(EC gmp)

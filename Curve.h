@@ -17,15 +17,12 @@ public:
     /* Constructor */
     Curve (void);
     Curve (mpz_class p, mpz_class n, mpz_class a4, mpz_class a6);
-    Curve (char* size, char* nb);
 
     /* Accessor */
     mpz_class p();
     mpz_class n();
     mpz_class a4();
     mpz_class a6();
-
-    void setCurve(char* dir, char* name);
 
 
 private:
