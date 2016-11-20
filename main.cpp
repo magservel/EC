@@ -1,7 +1,8 @@
 #include <iostream>
 #include <gmpxx.h>
 
-#include "Point.h"
+#include "Curves/Point.h"
+#include "Curves/Curve.h"
 #include "Data.h"
 
 using namespace std;
@@ -15,6 +16,10 @@ int main() {
 
     Data data (file_path);
     //data.print();
+
+
+    Curve c(data.p(), data.n(), data.a4(), data.a6());
+    Point p(data.gx(), data.gy(), c);
 
 
     return 0;
