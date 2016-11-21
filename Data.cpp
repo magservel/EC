@@ -4,7 +4,7 @@
 
 #include "Data.h"
 
-//using namespace std;
+using namespace std;
 
 Data::Data(string file_path) {
     parser(file_path);
